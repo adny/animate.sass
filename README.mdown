@@ -1,12 +1,12 @@
 # Animate.sass (compass V1.0)
-##### Refer to http://daneden.me/animate/ to view animations
-----
+##### Refer to http://adny.github.io/animate.sass to view animations
+
 
 Animate.sass is a Sass (V3.3) and Compass (V1.0) CSS animation library for WebKit, Firefox and beyond based on the work being done by [Dan Eden](https://github.com/daneden) in [Animate.css](http://daneden.me/animate/).
 
-This is a forked version of animate.sass, updated to v3.1 of animate.css, and leveraging techniques to minimize css bloat. The standard library is over 3400+ lines of code unminified, using sass, you only have to use the portions which make sense for your project.
+This is a forked version of animate.sass, updated to v3.1 of animate.css, and using compass v1.0 (currently alpha) to enable [Cross Browser] (http://beta.compass-style.org/reference/compass/support/) support
 
-----
+
 
 ## Installation
 
@@ -24,7 +24,7 @@ Here's how it works:
     ```
     @include animations(fading-entrances); 
     ```
-    Or include just the fadeInRight keyframe 
+    Or include just the fadeInRight 
     ```  
     @include animations(fading-entrances/fadeInRight);
     ```
@@ -37,18 +37,10 @@ Here's how it works:
 @include keyframes-fadeInRight
 
 .my-class {
-    @include animations(fadeInRight);
+    @include animation-name(fadeInRight);
+    @incude animation-duration(1s);
 }
 ```
-#### Example
-
-    This example will attach the animate.css keyframes for the fadeInRight animation inside the class 'my-class'.
-    ```
-    @include animation-keyframes(fading-entrances/fadeInRight);
-    .my-class {
-        @include animation-name(fadeInRight);
-    }
-    ```
 
 ### Animation families    
 
