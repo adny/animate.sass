@@ -1,26 +1,12 @@
-@mixin fadeIn {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
+@mixin keyframes-fadeIn {
+	@include keyframes(fadeIn) {
+		0% { opacity: 0; }
+		100% { opacity: 1; }
+	}
 }
 
-@mixin include-fadeIn {
-	@if $experimental-support-for-webkit {
-	  @-webkit-keyframes fadeIn { @include fadeIn; }
-	}
-	@if $experimental-support-for-khtml {
-	  @-khtml-keyframes fadeIn { @include fadeIn; }
-	}
-	@if $experimental-support-for-mozilla {
-	  @-moz-keyframes fadeIn { @include fadeIn; }
-	}
-	@if $experimental-support-for-microsoft {
-	  @-ms-keyframes fadeIn { @include fadeIn; }
-	}
-	@if $experimental-support-for-opera {
-	  @-o-keyframes fadeIn { @include fadeIn; }
-	}
-	@keyframes fadeIn { @include fadeIn; }
-
+@mixin animations-fadeIn {
+	@include keyframes-fadeIn;
 	.fadeIn {
 	  @include animation-name(fadeIn);
 	}

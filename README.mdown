@@ -1,24 +1,17 @@
-# Animate.sass re-imagined   
+# Animate.sass (compass V1.0)
 ##### Refer to http://daneden.me/animate/ to view animations
 ----
 
-Animate.sass is a Sass and Compass CSS animation library for WebKit, Firefox and beyond based on the work being done by [Dan Eden](https://github.com/daneden) in [Animate.css](http://daneden.me/animate/).
+Animate.sass is a Sass (V3.3) and Compass (V1.0) CSS animation library for WebKit, Firefox and beyond based on the work being done by [Dan Eden](https://github.com/daneden) in [Animate.css](http://daneden.me/animate/).
 
-The core of Animate.sass, despite being named "dot sass", is written in [SCSS](http://en.wikipedia.org/wiki/Scss).
-
-This is a forked version of animate.sass, updated to v2.1 of animate.css, and leveraging techniques to minimize css bloat. The standard library is over 3400+ lines of code unminified, using sass, you only have to use the portions which make sense for your project.
+This is a forked version of animate.sass, updated to v3.1 of animate.css, and leveraging techniques to minimize css bloat. The standard library is over 3400+ lines of code unminified, using sass, you only have to use the portions which make sense for your project.
 
 ----
 
-Animate.sass is a Sass and Compass CSS animation library for WebKit, Firefox and beyond based on the work being done by [Dan Eden](https://github.com/daneden) in [Animate.css](http://daneden.me/animate/).
-
-The core of Animate.sass, despite being named "dot sass", is written in [SCSS](http://en.wikipedia.org/wiki/Scss). Don't hate.
-
 ## Installation
 
-1. `gem install animate-sass`
-2. Add `require 'animate-sass'` in Compass's `config.rb` file
-3. Then `@import animate.sass` at the top of your main sass file.
+1. Copy the stylesheet files into you location of you choosing
+2. Then `@import location/animate` at the top of your main sass file.
 
 ## Usage
 
@@ -29,15 +22,20 @@ Here's how it works:
 
     Include the entire entrances animations family
     ```
-    @include animation-keyframes(fading-entrances); 
+    @include animations(fading-entrances); 
     ```
     Or include just the fadeInRight keyframe 
     ```  
-    @include animation-keyframes(fading-entrances/fadeInRight);
+    @include animations(fading-entrances/fadeInRight);
     ```
+    This will produce css with the keyframes and the respective class to attach to your elements.
 
-2. use the animation mixin to include the animation in your css.
+
+2. OR you can use the keyframes mixin to include just the keyframe.
+
 ```
+@include keyframes-fadeInRight
+
 .my-class {
     @include animations(fadeInRight);
 }
@@ -48,7 +46,7 @@ Here's how it works:
     ```
     @include animation-keyframes(fading-entrances/fadeInRight);
     .my-class {
-        @include animations(fadeInRight);
+        @include animation-name(fadeInRight);
     }
     ```
 

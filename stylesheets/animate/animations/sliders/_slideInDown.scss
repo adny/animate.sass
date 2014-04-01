@@ -1,28 +1,17 @@
-@mixin slideInDown($prefix) {
+@mixin keyframes-slideInDown {
+  @include keyframes(slideInDown) {
     0% {
-        @include transform(translateY(-2000px), $prefix);
-        opacity: 0;
+      @include transform(translateY(-2000px));
+      opacity: 0;
     }
-	100% {
-        @include transform(translateY(0), $prefix);
-	}
+    100% {
+      @include transform(translateY(0));
+    }
+  } 
 }
 
-@mixin include-slideInDown {
-	@if $experimental-support-for-webkit {
-	    @-webkit-keyframes slideInDown { @include slideInDown(webkit); }
-	}
-	@if $experimental-support-for-khtml {
-	    @-khtml-keyframes slideInDown { @include slideInDown(khtml); }
-	}
-	@if $experimental-support-for-mozilla {
-	    @-moz-keyframes slideInDown { @include slideInDown(moz); }
-	}
-	@if $experimental-support-for-opera {
-	    @-o-keyframes slideInDown { @include slideInDown(o); }
-	}
-	@keyframes slideInDown { @include slideInDown(none); }
-
+@mixin animations-slideInDown {
+	@include keyframes-slideInDown;
 	.slideInDown {
 	    @include animation-name(slideInDown);
 	}

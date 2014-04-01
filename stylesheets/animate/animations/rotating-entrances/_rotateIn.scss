@@ -1,34 +1,19 @@
-@mixin rotateIn($prefix) {
-  0% {
-    @include animate-transform-origin(center center, $prefix);
-    @include animate-transform(rotate(-200deg), $prefix);
-    opacity: 0;
-  }
-  100% {
-    @include animate-transform-origin(center center, $prefix);
-    @include animate-transform(rotate(0), $prefix);
-    opacity: 1;
+@mixin keyframes-rotateIn {
+  @include keyframes(rotateIn) {
+    0% {
+      @include transform-origin(center, center);
+      @include transform(rotate(-200deg));
+      opacity: 0;
+    }
+    100% {
+      @include transform-origin(center, center);
+      @include transform(rotate(0));
+      opacity: 1;
+    }
   }
 }
-
-@mixin include-rotateIn {
-	@if $experimental-support-for-webkit {
-	  @-webkit-keyframes rotateIn { @include rotateIn(webkit); }
-	}
-	@if $experimental-support-for-khtml {
-	  @-khtml-keyframes rotateIn { @include rotateIn(khtml); }
-	}
-	@if $experimental-support-for-mozilla {
-	  @-moz-keyframes rotateIn { @include rotateIn(moz); }
-	}
-	@if $experimental-support-for-microsoft {
-	  @-ms-keyframes rotateIn { @include rotateIn(ms); }
-	}
-	@if $experimental-support-for-opera {
-	  @-o-keyframes rotateIn { @include rotateIn(o); }
-	}
-	@keyframes rotateIn { @include rotateIn(none); }
-
+@mixin animations-rotateIn {
+	@include keyframes-rotateIn;
 	.rotateIn {
 	  @include animation-name(rotateIn);
 	}

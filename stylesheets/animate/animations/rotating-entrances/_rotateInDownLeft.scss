@@ -1,34 +1,20 @@
-@mixin rotateInDownLeft($prefix) {
-  0% {
-    @include animate-transform-origin(left bottom, $prefix);
-    @include animate-transform(rotate(-90deg), $prefix);
-    opacity: 0;
-  }
-  100% {
-    @include animate-transform-origin(left bottom, $prefix);
-    @include animate-transform(rotate(0), $prefix);
-    opacity: 1;
+@mixin keyframes-rotateInDownLeft {
+  @include keyframes(rotateInDownLeft) {
+    0% {
+      @include transform-origin(left, bottom);
+      @include transform(rotate(-90deg));
+      opacity: 0;
+    }
+    100% {
+      @include transform-origin(left, bottom);
+      @include transform(rotate(0));
+      opacity: 1;
+    }
   }
 }
 
-@mixin include-rotateInDownLeft {
-	@if $experimental-support-for-webkit {
-	  @-webkit-keyframes rotateInDownLeft { @include rotateInDownLeft(webkit); }
-	}
-	@if $experimental-support-for-khtml {
-	  @-khtml-keyframes rotateInDownLeft { @include rotateInDownLeft(khtml); }
-	}
-	@if $experimental-support-for-mozilla {
-	  @-moz-keyframes rotateInDownLeft { @include rotateInDownLeft(moz); }
-	}
-	@if $experimental-support-for-microsoft {
-	  @-ms-keyframes rotateInDownLeft { @include rotateInDownLeft(ms); }
-	}
-	@if $experimental-support-for-opera {
-	  @-o-keyframes rotateInDownLeft { @include rotateInDownLeft(o); }
-	}
-	@keyframes rotateInDownLeft { @include rotateInDownLeft(none); }
-
+@mixin animations-rotateInDownLeft {
+	@include keyframes-rotateInDownLeft;
 	.rotateInDownLeft {
 	  @include animation-name(rotateInDownLeft);
 	}

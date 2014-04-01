@@ -1,17 +1,9 @@
-# 0.2.0
-
-* [CHANGED] Now based on version 2.1 of animate.css
-* [CHANGED] Now use with mixins
-
-# 0.1.1
-
-* [NEW] Enabled individual animation and animation family usage (not required to load the full stack)
-* [CHANGED] Moved all parts to /animate
-* [CHANGED] Renamed /helpers to /utilities
-
 # 0.1.0
 
-* Initial version ready for development and testing
+* Decided to make a new version away from the original due to breaking changes to the code
+* [NEW] Updated to use Sass v3.3 and Compass v1.0, that means it will use the new Compass Cross-Browser Support
+* [CHANGED] the animations can be added now using the animations(<animationName/Set>) mixin, just the keyframes using the keyframes-<animationName> or using the mixin directly using animations-<animationName>
+* [CHANGED] removed all the gem stuff, as i have no clue about it :P
 
 ---
 

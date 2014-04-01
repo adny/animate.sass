@@ -1,34 +1,20 @@
-@mixin fadeInDown($prefix) {
-  0% {
-    opacity: 0;
-    @include animate-transform(translateY(-20px), $prefix);
-  }
-  100% {
-    opacity: 1;
-    @include animate-transform(translateY(0), $prefix);
+@mixin keyframes-fadeInDown {
+  @include keyframes(fadeInDown) {
+    0% {
+      opacity: 0;
+      @include transform(translateY(-20px));
+    }
+    100% {
+      opacity: 1;
+      @include transform(translateY(0));
+    }
   }
 }
 
-@mixin include-fadeInDown {
-	@if $experimental-support-for-webkit {
-	  @-webkit-keyframes fadeInDown { @include fadeInDown(webkit); }
-	}
-	@if $experimental-support-for-khtml {
-	  @-khtml-keyframes fadeInDown { @include fadeInDown(khtml); }
-	}
-	@if $experimental-support-for-mozilla {
-	  @-moz-keyframes fadeInDown { @include fadeInDown(moz); }
-	}
-	@if $experimental-support-for-microsoft {
-	  @-ms-keyframes fadeInDown { @include fadeInDown(ms); }
-	}
-	@if $experimental-support-for-opera {
-	  @-o-keyframes fadeInDown { @include fadeInDown(o); }
-	}
-	@keyframes fadeInDown { @include fadeInDown(none); }
-
-	.fadeInDown {
-	  @include animation-name(fadeInDown);
-	}
+@mixin animations-fadeInDown {
+  @include keyframes-fadeInDown;
+  .fadeInDown {
+    @include animation-name(fadeInDown);
+  }
 }
 

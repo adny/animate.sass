@@ -1,33 +1,23 @@
-@mixin lightSpeedOut($prefix) {
+@mixin keyframes-lightSpeedOut {
+  @include keyframes(lightSpeedOut) {
     0% {
-        @include transform(translateX(0%) skewX(0deg), $prefix);
-        opacity: 1;
+      @include transform(translateX(0%) skewX(0deg));
+      opacity: 1;
     }
-	100% {
-      @include transform(translateX(100%) skewX(-30deg), $prefix);
+    100% {
+      @include transform(translateX(100%) skewX(-30deg));
       opacity: 0;
-	}
+    }
+  }
 }
 
-@mixin include-lightSpeedOut {
-	@if $experimental-support-for-webkit {
-	  @-webkit-keyframes lightSpeedOut { @include lightSpeedOut(webkit); }
-	}
-	@if $experimental-support-for-khtml {
-	  @-khtml-keyframes lightSpeedOut { @include lightSpeedOut(khtml); }
-	}
-	@if $experimental-support-for-mozilla {
-	  @-moz-keyframes lightSpeedOut { @include lightSpeedOut(moz); }
-	}
-	@if $experimental-support-for-opera {
-	  @-o-keyframes lightSpeedOut { @include lightSpeedOut(o); }
-	}
-	@keyframes lightSpeedOut { @include lightSpeedOut(none); }
+@mixin animations-lightSpeedOut {
+	@include keyframes-lightSpeedOut;
 
 	.lightSpeedOut {
 	  @include animation-name(lightSpeedOut);
 	  @include animation-timing-function(ease-out);
-      @include animation-duration(0.25s);
+    @include animation-duration(0.25s);
 	}
 }
 

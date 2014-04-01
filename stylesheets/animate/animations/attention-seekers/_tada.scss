@@ -1,36 +1,17 @@
-@mixin tada($prefix) {
-  0%   { @include animate-transform(scale(1), $prefix); }
-  10%  { @include animate-transform(scale(0.9) rotate(-3deg), $prefix); }
-  20%  { @include animate-transform(scale(0.9) rotate(-3deg), $prefix); }
-  30%  { @include animate-transform(scale(1.1) rotate(3deg), $prefix); }
-  40%  { @include animate-transform(scale(1.1) rotate(-3deg), $prefix); }
-  50%  { @include animate-transform(scale(1.1) rotate(3deg), $prefix); }
-  60%  { @include animate-transform(scale(1.1) rotate(-3deg), $prefix); }
-  70%  { @include animate-transform(scale(1.1) rotate(3deg), $prefix); }
-  80%  { @include animate-transform(scale(1.1) rotate(-3deg), $prefix); }
-  90%  { @include animate-transform(scale(1.1) rotate(3deg), $prefix); }
-  100% { @include animate-transform(scale(1)   rotate(0), $prefix); }
+@mixin keyframes-tada {
+  @include keyframes(tada) {
+    0%   { @include transform(scale(1)); }
+    10%  { @include transform(scale(0.9) rotate(-3deg)); }
+    20%  { @include transform(scale(0.9) rotate(-3deg)); }
+    30%,50%,70%,90%  { @include transform(scale(1.1) rotate(3deg)); }
+    40% ,60%, 80% { @include transform(scale(1.1) rotate(-3deg)); }
+    100% { @include transform(scale(1) rotate(0)); }
+  }
 }
 
-@mixin include-tada {
-	@if $experimental-support-for-webkit {
-	  @-webkit-keyframes tada { @include tada(webkit); }
-	}
-	@if $experimental-support-for-khtml {
-	  @-khtml-keyframes tada { @include tada(khtml); }
-	}
-	@if $experimental-support-for-mozilla {
-	  @-moz-keyframes tada { @include tada(moz); }
-	}
-	@if $experimental-support-for-microsoft {
-	  @-ms-keyframes tada { @include tada(ms); }
-	}
-	@if $experimental-support-for-opera {
-	  @-o-keyframes tada { @include tada(o); }
-	}
-	@keyframes tada { @include tada(none); }
-
+@mixin animations-tada {
+	@include keyframes-tada;
 	.tada {
-	  @include animation-name(tada);
+    @include animation-name(tada);
 	}
 }

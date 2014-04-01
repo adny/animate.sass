@@ -1,28 +1,17 @@
-@mixin slideOutLeft($prefix) {
+@mixin keyframes-slideOutLeft {
+  @include keyframes(slideOutLeft) {
     0% {
-        @include transform(translateX(0), $prefix);
+      @include transform(translateX(0));
     }
-	100% {
-      @include transform(translateX(-2000px), $prefix);
+    100% {
+      @include transform(translateX(-2000px));
       opacity: 0;
-	}
+    }
+  }  
 }
 
-@mixin include-slideOutLeft {
-	@if $experimental-support-for-webkit {
-	  @-webkit-keyframes slideOutLeft { @include slideOutLeft(webkit); }
-	}
-	@if $experimental-support-for-khtml {
-	  @-khtml-keyframes slideOutLeft { @include slideOutLeft(khtml); }
-	}
-	@if $experimental-support-for-mozilla {
-	  @-moz-keyframes slideOutLeft { @include slideOutLeft(moz); }
-	}
-	@if $experimental-support-for-opera {
-	  @-o-keyframes slideOutLeft { @include slideOutLeft(o); }
-	}
-	@keyframes slideOutLeft { @include slideOutLeft(none); }
-
+@mixin animations-slideOutLeft {
+	@include keyframes-slideOutLeft;
 	.slideOutLeft {
 	  @include animation-name(slideOutLeft);
 	}

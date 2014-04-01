@@ -1,32 +1,18 @@
-@mixin fadeInRightBig($prefix) {
-  0% {
-    opacity: 0;
-    @include animate-transform(translateX(2000px), $prefix);
-  }
-  100% {
-    opacity: 1;
-    @include animate-transform(translateX(0), $prefix);
+@mixin keyframes-fadeInRightBig {
+  @include keyframes(fadeInRightBig) {
+    0% {
+      opacity: 0;
+      @include transform(translateX(2000px));
+    }
+    100% {
+      opacity: 1;
+      @include transform(translateX(0));
+    }
   }
 }
 
-@mixin include-fadeInRightBig {
-	@if $experimental-support-for-webkit {
-	  @-webkit-keyframes fadeInRightBig { @include fadeInRightBig(webkit); }
-	}
-	@if $experimental-support-for-khtml {
-	  @-khtml-keyframes fadeInRightBig { @include fadeInRightBig(khtml); }
-	}
-	@if $experimental-support-for-mozilla {
-	  @-moz-keyframes fadeInRightBig { @include fadeInRightBig(moz); }
-	}
-	@if $experimental-support-for-microsoft {
-	  @-ms-keyframes fadeInRightBig { @include fadeInRightBig(ms); }
-	}
-	@if $experimental-support-for-opera {
-	  @-o-keyframes fadeInRightBig { @include fadeInRightBig(o); }
-	}
-	@keyframes fadeInRightBig { @include fadeInRightBig(none); }
-
+@mixin animations-fadeInRightBig {
+	@include keyframes-fadeInRightBig;
 	.fadeInRightBig {
 	  @include animation-name(fadeInRightBig);
 	}

@@ -1,0 +1,19 @@
+@import "../stylesheets/animate";
+
+@include animations("rotating-entrances");
+@include animations("rotating-exits");
+@include animations("attention-seekers"); 
+@include animations("bouncing-entrances");
+@include animations("bouncing-exits"); 
+@include animations("fading-entrances");
+@include animations("fading-exits");
+@include animations("specials");
+@include animations("lightSpeed");
+@include animations("flippers");
+@include animations("sliders");
+
+
+.animated {
+  @include animation-duration(1s);
+  @include animation-fill-mode(both);
+}

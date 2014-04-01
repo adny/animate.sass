@@ -1,34 +1,20 @@
-@mixin rotateInUpRight($prefix) {
-  0% {
-    @include animate-transform-origin(right bottom, $prefix);
-    @include animate-transform(rotate(-90deg), $prefix);
-    opacity: 0;
-  }
-  100% {
-    @include animate-transform-origin(right bottom, $prefix);
-    @include animate-transform(rotate(0), $prefix);
-    opacity: 1;
+@mixin keyframes-rotateInUpRight {
+  @include keyframes(rotateInUpRight) {
+    0% {
+      @include transform-origin(right, bottom);
+      @include transform(rotate(-90deg));
+      opacity: 0;
+    }
+    100% {
+      @include transform-origin(right, bottom);
+      @include transform(rotate(0));
+      opacity: 1;
+    }
   }
 }
 
-@mixin include-rotateInUpRight {
-	@if $experimental-support-for-webkit {
-	  @-webkit-keyframes rotateInUpRight { @include rotateInUpRight(webkit); }
-	}
-	@if $experimental-support-for-khtml {
-	  @-khtml-keyframes rotateInUpRight { @include rotateInUpRight(khtml); }
-	}
-	@if $experimental-support-for-mozilla {
-	  @-moz-keyframes rotateInUpRight { @include rotateInUpRight(moz); }
-	}
-	@if $experimental-support-for-microsoft {
-	  @-ms-keyframes rotateInUpRight { @include rotateInUpRight(ms); }
-	}
-	@if $experimental-support-for-opera {
-	  @-o-keyframes rotateInUpRight { @include rotateInUpRight(o); }
-	}
-	@keyframes rotateInUpRight { @include rotateInUpRight(none); }
-
+@mixin animations-rotateInUpRight {
+	@include keyframes-rotateInUpRight;
 	.rotateInUpRight {
 	  @include animation-name(rotateInUpRight);
 	}
